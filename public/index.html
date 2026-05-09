@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Typing Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container" id="app">
+        <!-- Auth Screen (Login / Register) -->
+        <div id="auth-screen" class="screen active">
+            <h1 class="logo">Animal Typing<span class="accent">Pro</span></h1>
+            <div class="auth-tabs">
+                <button id="tab-login" class="tab active">Login</button>
+                <button id="tab-register" class="tab">Register</button>
+            </div>
+            
+            <form id="auth-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div id="auth-error" class="error-msg"></div>
+                <button type="submit" id="auth-submit" class="btn primary-btn">Login</button>
+            </form>
+        </div>
+
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen hidden">
+            <h1 class="logo">Animal Typing<span class="accent">Pro</span></h1>
+            <h2 id="welcome-msg">Welcome, User!</h2>
+            <div class="action-buttons">
+                <button id="btn-start" class="btn primary-btn pulse">Start Game</button>
+                <button id="btn-ranking-home" class="btn secondary-btn">Leaderboard</button>
+                <button id="btn-logout" class="btn ghost-btn">Logout</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div id="countdown" class="countdown">3</div>
+            <div id="game-ui" class="hidden">
+                <div class="game-header">
+                    <div class="stat"><span class="label">Time:</span> <span id="time-left">60</span>s</div>
+                    <div class="stat"><span class="label">Score:</span> <span id="current-score">0</span></div>
+                </div>
+                <div class="word-container">
+                    <div id="target-word" class="target-word">animal</div>
+                    <input type="text" id="type-input" autocomplete="off" autofocus>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen hidden">
+            <h2>Time's Up!</h2>
+            <div class="score-display">
+                <span class="score-label">Your Score</span>
+                <span id="final-score" class="score-value">0</span>
+            </div>
+            <div class="action-buttons">
+                <button id="btn-play-again" class="btn primary-btn">Play Again</button>
+                <button id="btn-ranking-result" class="btn secondary-btn">View Rankings</button>
+                <button id="btn-home-result" class="btn ghost-btn">Home</button>
+            </div>
+        </div>
+
+        <!-- Ranking Screen -->
+        <div id="ranking-screen" class="screen hidden">
+            <h2>Top 100 Players</h2>
+            <div class="ranking-container">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <button id="btn-home-ranking" class="btn ghost-btn mt-4">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

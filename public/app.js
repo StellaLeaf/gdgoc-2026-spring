@@ -203,7 +203,7 @@ function showScreen(screenId) {
 function checkAuth() {
     if (state.token) {
         console.log(state);
-        els.welcomeMsg.textContent = `Welcome, ${state.username || "Player"}!`;
+        els.welcomeMsg.textContent = `ようこそ、${state.username || "プレイヤー"}さん！`;
         showScreen("home-screen");
     } else {
         showScreen("auth-screen");
@@ -231,7 +231,7 @@ els.tabLogin.addEventListener("click", () => {
     state.isLoginTab = true;
     els.tabLogin.classList.add("active");
     els.tabRegister.classList.remove("active");
-    els.authSubmit.textContent = "Login";
+    els.authSubmit.textContent = "ログイン";
     els.authError.textContent = "";
 });
 
@@ -239,7 +239,7 @@ els.tabRegister.addEventListener("click", () => {
     state.isLoginTab = false;
     els.tabRegister.classList.add("active");
     els.tabLogin.classList.remove("active");
-    els.authSubmit.textContent = "Register";
+    els.authSubmit.textContent = "登録";
     els.authError.textContent = "";
 });
 
@@ -377,7 +377,7 @@ async function endGame() {
 async function showRankings() {
     showScreen("ranking-screen");
     els.rankingBody.innerHTML =
-        '<tr><td colspan="3" style="text-align:center">Loading...</td></tr>';
+        '<tr><td colspan="3" style="text-align:center">読み込み中...</td></tr>';
 
     try {
         const rankings = await apiCall("/api/ranking");
@@ -385,7 +385,7 @@ async function showRankings() {
 
         if (rankings.length === 0) {
             els.rankingBody.innerHTML =
-                '<tr><td colspan="3" style="text-align:center">No scores yet!</td></tr>';
+                '<tr><td colspan="3" style="text-align:center">まだスコアがありません！</td></tr>';
             return;
         }
 
@@ -400,7 +400,7 @@ async function showRankings() {
         });
     } catch (err) {
         els.rankingBody.innerHTML =
-            '<tr><td colspan="3" style="text-align:center; color: var(--error)">Failed to load rankings</td></tr>';
+            '<tr><td colspan="3" style="text-align:center; color: var(--error)">ランキングの読み込みに失敗しました</td></tr>';
     }
 }
 

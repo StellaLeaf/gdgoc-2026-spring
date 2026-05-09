@@ -346,7 +346,8 @@ function updateGameUi() {
 }
 
 els.typeInput.addEventListener("input", (e) => {
-    const val = e.target.value.toLowerCase().trim();
+    const originalVal = e.target.value;
+    const val = originalVal.toLowerCase().trim();
 
     if (val === state.currentWord) {
         state.score++;
@@ -354,6 +355,7 @@ els.typeInput.addEventListener("input", (e) => {
         nextWord();
     } else if (state.currentWord.indexOf(val) !== 0 && val.length > 0) {
         // user typed something wrong
+        els.typeInput.value = originalVal.slice(0, -1);
         els.typeInput.classList.add("wrong-input");
         setTimeout(() => els.typeInput.classList.remove("wrong-input"), 400);
     }
